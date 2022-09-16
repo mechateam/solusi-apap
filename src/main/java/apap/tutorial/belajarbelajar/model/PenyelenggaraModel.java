@@ -20,12 +20,12 @@ import java.util.List;
 public class PenyelenggaraModel implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String noPenyelenggara;
+    private Long noPenyelenggara;
 
     @NotNull
     @Size(max=30)
     @Column(name = "nama_penyelenggara", nullable = false)
-    private String namePenyelenggara;
+    private String namaPenyelenggara;
 
     @NotNull
     @Column(name = "jenis_lembaga", nullable = false)
