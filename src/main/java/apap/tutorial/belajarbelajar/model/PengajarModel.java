@@ -22,12 +22,12 @@ import java.util.List;
 public class PengajarModel implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String noPengajar;
+    private Long noPengajar;
 
     @NotNull
     @Size(max=30)
     @Column(name = "nama_pengajar", nullable = false)
-    private String namePengajar;
+    private String namaPengajar;
 
     @NotNull
     @Column(name = "is_pengajar_universitas", nullable = false)
