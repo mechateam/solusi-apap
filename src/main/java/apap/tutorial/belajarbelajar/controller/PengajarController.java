@@ -26,27 +26,18 @@ public class PengajarController {
     @Autowired
     private CourseService courseService;
 
-    // @GetMapping("/pengajar/add/{code}")
-    // public String addPengajarToCourseFormPage(@PathVariable String code, Model model) {
-    //     CourseModel course = courseService.getCourseByCodeCourse(code);
-    //     PengajarModel pengajar = new PengajarModel();
-    //     // Tambah course ke pengajar
-    //     List<CourseModel> listCourse = new ArrayList<>();
-    //     listCourse.add(course);
-    //     pengajar.setListCourse(listCourse);
-    //     // Tambah pengajar ke course
-    //     List<PengajarModel> listPengajar = course.getListPengajar();
-    //     listPengajar.add(pengajar);
-    //     course.setListPengajar(listPengajar);
-
-    //     model.addAttribute("pengajar", pengajar);
-    //     return "form-add-pengajar";
-    // }
-
-    // @PostMapping("/pengajar/add")
-    // public String addPengajarSubmitPage(@ModelAttribute PengajarModel pengajar, Model model) {
-    //     pengajarService.addPengajar(pengajar);
-    //     model.addAttribute("no_pengajar", pengajar.getNoPengajar());
-    //     return "add-pengajar";
-    // }
+    @GetMapping("/pengajar/add/{code}")
+    public String addPengajarFormPage(@PathVariable String code, Model model) {
+        PengajarModel pengajar = new PengajarModel();
+        CourseModel course = courseService.getCourseByCodeCourse(code);
+        pengajar.setCourse(course);
+        model.addAttribute("pengajar", pengajar);
+        return "form-add-pengajar";
+    }
+     @PostMapping("/pengajar/add")
+     public String addPengajarSubmitPage(@ModelAttribute PengajarModel pengajar, Model model) {
+         pengajarService.addPengajar(pengajar);
+         model.addAttribute("no_pengajar", pengajar.getNoPengajar());
+         return "add-pengajar";
+     }
 }
