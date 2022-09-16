@@ -27,18 +27,10 @@ public class PengajarController {
     private CourseService courseService;
 
     @GetMapping("/pengajar/add/{code}")
-    public String addPengajarToCourseFormPage(@PathVariable String code, Model model) {
-        CourseModel course = courseService.getCourseByCodeCourse(code);
+    public String addPengajarFormPage(@PathVariable String code, Model model) {
         PengajarModel pengajar = new PengajarModel();
-        // Tambah course ke pengajar
-        List<CourseModel> listCourse = new ArrayList<>();
-        listCourse.add(course);
-        pengajar.setListCourse(listCourse);
-        // Tambah pengajar ke course
-        List<PengajarModel> listPengajar = course.getListPengajar();
-        listPengajar.add(pengajar);
-        course.setListPengajar(listPengajar);
-
+        CourseModel course = courseService.getCourseByCodeCourse(code);
+        pengajar.setCourse(course);
         model.addAttribute("pengajar", pengajar);
         return "form-add-pengajar";
     }

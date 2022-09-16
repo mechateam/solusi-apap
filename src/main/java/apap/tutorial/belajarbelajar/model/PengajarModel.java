@@ -27,7 +27,7 @@ public class PengajarModel implements Serializable {
     @NotNull
     @Size(max=30)
     @Column(name = "nama_pengajar", nullable = false)
-    private String namePengajar;
+    private String namaPengajar;
 
     @NotNull
     @Column(name = "is_pengajar_universitas", nullable = false)
