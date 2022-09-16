@@ -30,7 +30,7 @@ public class CourseController {
         return "add-course";
     }
 
-    @GetMapping("/course/viewAll")
+    @GetMapping("/course/viewall")
     public String listCourse(Model model) {
         List<CourseModel> listCourse = courseService.getListCourse();
         model.addAttribute("listCourse", listCourse);
@@ -41,7 +41,6 @@ public class CourseController {
     public String viewDetailCoursePage(@RequestParam(value = "code") String code, Model model) {
         CourseModel course = courseService.getCourseByCodeCourse(code);
         List<PengajarModel> listPengajar = course.getListPengajar();
-
         model.addAttribute("listPengajar", listPengajar);
         model.addAttribute("course", course);
 
