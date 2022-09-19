@@ -12,12 +12,12 @@ import java.util.Optional;
 public interface CourseDb extends JpaRepository<CourseModel, String> {
     // JPA
     Optional<CourseModel> findByCode(String code);
-    // Query
-//    @Query("SELECT u FROM User u WHERE u.status = :status and u.name = :name")
-//     User findUserByStatusAndNameNamedParams(
-//  @Param("status") Integer status,
-//  @Param("name") String name);
-    @Query("SELECT c FROM CourseModel c WHERE c.code = :code")
-    CourseModel findByCodeUsingQuery(@Param("code") String code);
 
+    // Query
+    // @Query("SELECT u FROM User u WHERE u.status = :status and u.name = :name")
+    // User findUserByStatusAndNameNamedParams(
+    // @Param("status") Integer status,
+    // @Param("name") String name);
+    @Query("SELECT c FROM CourseModel c WHERE c.code = :code")
+    Optional<CourseModel> findByCodeUsingQuery(@Param("code") String code);
 }
